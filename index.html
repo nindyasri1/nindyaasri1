@@ -1,11 +1,19 @@
-<script>
+
+
+<!DOCTYPE html>
+<html lang="id">
+  <script>
 if (localStorage.getItem("loginRT") !== "true") {
   window.location.href = "login.html";
 }
 </script>
+  <script>
+function logout() {
+  localStorage.clear();
+  window.location.href = "login.html";
+}
+</script>
 
-<!DOCTYPE html>
-<html lang="id">
 <head>
   <meta charset="UTF-8">
   <title>Laporan Keuangan RT Online</title>
@@ -47,18 +55,13 @@ if (localStorage.getItem("loginRT") !== "true") {
   <button onclick="logout()">Logout</button>
 
   
-<script>
-function logout() {
-  localStorage.clear();
-  window.location.href = "login.html";
-}
-</script>
 
 </form>
 </div>
 
 </body>
 </html>
+
 
 
 
