@@ -1,106 +1,65 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Login Laporan Keuangan RT</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box }
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #16a34a, #22c55e);
-    }
-    .login-box {
-      background: #fff;
-      width: 100%;
-      max-width: 380px;
-      padding: 32px;
-      border-radius: 16px;
-      box-shadow: 0 20px 40px rgba(0,0,0,.15);
-    }
-    h1 {
-      margin: 0 0 8px;
-      font-size: 22px;
-      text-align: center;
-      color: #111827;
-    }
-    p {
-      margin: 0 0 24px;
-      text-align: center;
-      color: #6b7280;
-      font-size: 14px;
-    }
-    label {
-      font-size: 13px;
-      font-weight: 600;
-      color: #374151;
-    }
-    input {
-      width: 100%;
-      padding: 12px;
-      margin: 6px 0 16px;
-      border-radius: 10px;
-      border: 1px solid #d1d5db;
-      font-size: 14px;
-    }
-    input:focus {
-      outline: none;
-      border-color: #22c55e;
-    }
-    button {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 12px;
-      background: #16a34a;
-      color: #fff;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: .2s;
-    }
-    button:hover { background: #15803d }
-    .footer {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 12px;
-      color: #9ca3af;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Login RT</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#16a34a,#22c55e);
+}
+.card{
+  background:#fff;
+  padding:30px;
+  width:100%;
+  max-width:380px;
+  border-radius:14px;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+h2{text-align:center;margin-bottom:6px}
+p{text-align:center;color:#6b7280;margin-bottom:20px}
+input,button{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border-radius:10px;
+  font-size:14px;
+}
+input{border:1px solid #d1d5db}
+button{
+  border:none;
+  background:#16a34a;
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
+}
+button:hover{background:#15803d}
+</style>
 </head>
 <body>
 
-<div class="login-box">
-  <h1>USER LOGIN</h1>
-  <p>Sistem Laporan Keuangan RT</p>
-  
-<form
-  action="https://script.google.com/macros/s/AKfycb5hDXHir_DvDUq06IOCsXydOUA7A0nhnSvIfwEgv-IovYcucJkdfapT8VLC6GmwcuV/exec"
-  method="POST"
->
-  <input type="hidden" name="action" value="login">
+<div class="card">
+  <h2>Login RT</h2>
+  <p>Laporan Keuangan RT</p>
 
-  <input name="username" required>
-  <input type="password" name="password" required>
+  <form
+    action="https://script.google.com/macros/s/AKfycby5hDXHir_DvDUq06lOCsXydOUA7A0nhnSvIfwEgv-lovYcucJkdfapT8VLC6GmwcuV/exec"
+    method="POST"
+  >
+    <input type="hidden" name="action" value="login">
 
-  <button type="submit">Login</button>
-</form>
+    <input name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
 
-  
-
-  <div class="footer">
-    © RT Digital
-  </div>
+    <button type="submit">Masuk</button>
+  </form>
 </div>
 
 </body>
 </html>
-
-
-
