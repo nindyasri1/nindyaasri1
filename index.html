@@ -2,19 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="id">
-<script>
-const params = new URLSearchParams(window.location.search);
-if (params.get("login") === "success") {
-  localStorage.setItem("loginRT","true");
-  localStorage.setItem("roleRT", params.get("role"));
-  window.history.replaceState({}, document.title, "index.html");
-}
-
-if (localStorage.getItem("loginRT") !== "true") {
-  window.location.href = "login.html";
-}
-</script>
-  
 <head>
   <meta charset="UTF-8">
   <title>Laporan Keuangan RT Online</title>
@@ -62,6 +49,7 @@ if (localStorage.getItem("loginRT") !== "true") {
 
 </body>
 </html>
+
 
 
 
