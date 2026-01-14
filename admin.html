@@ -24,7 +24,6 @@
 <button onclick="simpan()">Simpan</button>
 
 <p id="msg"></p>
-<button onclick="logout()">Logout</button>
 
 <script>
 function simpan(){
@@ -52,20 +51,23 @@ function simpan(){
   });
 }
 
+
+</script>
+<script>
 function logout(){
   sessionStorage.removeItem('admin');
   location.href = 'login.html';
 }
+  </script>
 <script>
 if (sessionStorage.getItem('admin') !== 'true') {
   location.href = 'login.html';
 }
 </script>
-
-</script>
-
+  
 </body>
 </html>
+
 
 
 
