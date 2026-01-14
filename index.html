@@ -1,95 +1,49 @@
-
-
-
 <!DOCTYPE html>
-<html lang="id">
-  
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>Laporan Keuangan RT Online</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body { font-family: Arial; background:#f3f4f6; padding:20px }
-    .card { background:#fff; padding:20px; max-width:600px; margin:auto; border-radius:10px }
-    h2 { text-align:center }
-    input, button { width:100%; padding:10px; margin:6px 0 }
-    button { background:#16a34a; color:white; border:none; border-radius:6px }
-    #notif { margin-top:10px; font-weight:bold; text-align:center }
-  </style>
+  <title>Laporan Keuangan RT</title>
 </head>
-
 <body>
 
-<h2>Laporan Keuangan Nindya 1</h2>
+<h2>Laporan Keuangan RT</h2>
 
-<form id="formKeuangan" method="post">
-  
+<form id="form">
   <input type="date" name="tanggal" required>
   <input type="text" name="keterangan" required>
   <input type="number" name="masuk">
   <input type="number" name="keluar">
 
-  <!-- 🔥 tombol HARUS di dalam form -->
-  <button type="submit">Simpan ke Spreadsheet</button>
+  <button type="submit">Simpan</button>
 </form>
 
-<div id="notif"></div>
+<p id="notif"></p>
 
-
-  <div id="notif"></div>
-</div>
 <script>
-alert("JS AKTIF"); // DEBUG
-
-const form = document.getElementById("formKeuangan");
+const URL = "https://script.google.com/macros/s/AKfycbytfV3WeCtWzO1mL1wjFgBuoAXcMTuRYFQeXY2LxNkAVL4sSE3FKzZV5ecoQPwvnCeQ/exec";
+const form = document.getElementById("form");
 const notif = document.getElementById("notif");
 
-if (!form) {
-  alert("FORM TIDAK DITEMUKAN");
-}
-
-form.addEventListener("submit", function(e){
-  alert("SUBMIT TERPANGGIL"); // DEBUG
+form.addEventListener("submit", e => {
   e.preventDefault();
 
-  notif.innerHTML = "⏳ Menyimpan data...";
+  notif.innerText = "Menyimpan...";
 
-  const formData = new FormData(form);
-  formData.append("action","simpan");
-
-  fetch("https://script.google.com/macros/s/AKfycbxgKGh004FHbgE9fRel5w4Jn_TjY0Q3N1GvPkwUL-yE5C4a33WdAALEU-7OtDLLOINc/exec",{
-    method:"POST",
-    body:formData
+  fetch(URL, {
+    method: "POST",
+    body: new FormData(form)
   })
-  .then(r=>r.text())
-  .then(r=>{
-    notif.innerHTML = r.trim()==="OK"
-      ? "✅ Data berhasil disimpan"
-      : "❌ Gagal menyimpan data";
+  .then(r => r.text())
+  .then(t => {
+    notif.innerText = t === "OK"
+      ? "✅ Berhasil disimpan"
+      : "❌ Gagal: " + t;
   })
-  .catch(()=>{
-    notif.innerHTML="❌ Koneksi gagal";
+  .catch(() => {
+    notif.innerText = "❌ Koneksi gagal";
   });
 });
-  fetch(scriptURL, {
-  method: "POST",
-  body: new FormData(form)
-})
-
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
