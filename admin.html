@@ -1,16 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Admin Keuangan RT</title>
+</head>
+<body>
+
+<h3>Input Keuangan RT</h3>
+
+<input type="date" id="tanggal"><br><br>
+<select id="jenis">
+  <option>Pemasukan</option>
+  <option>Pengeluaran</option>
+</select><br><br>
+<input type="text" id="keterangan" placeholder="Keterangan"><br><br>
+<input type="number" id="jumlah" placeholder="Jumlah"><br><br>
+
+<button onclick="simpan()">Simpan</button>
+
+<p id="msg"></p>
+
 <script>
-if(sessionStorage.getItem('admin')!=='true'){
-location.href='login.html';
+function simpan(){
+  fetch('https://script.google.com/macros/s/AKfycbwxl263rf_wXePPx8-4Nabz_6vW_1FxeFfe7MtC8mleDq_6AbEP1wPLkh2XIgdprBJPSg/exec', {
+    method: 'POST',
+    body: new URLSearchParams({
+      tanggal: document.getElementById('tanggal').value,
+      jenis: document.getElementById('jenis').value,
+      keterangan: document.getElementById('keterangan').value,
+      jumlah: document.getElementById('jumlah').value
+    })
+  })
+  .then(res => res.text())
+  .then(res => {
+    document.getElementById('msg').innerText = 'Data berhasil disimpan';
+    
+    // optional: reset form
+    document.getElementById('tanggal').value = '';
+    document.getElementById('keterangan').value = '';
+    document.getElementById('jumlah').value = '';
+  })
+  .catch(err => {
+    document.getElementById('msg').innerText = 'Gagal menyimpan data';
+    console.error(err);
+  });
 }
 </script>
-<form method="post" action="https://script.google.com/macros/s/AKfycbwxl263rf_wXePPx8-4Nabz_6vW_1FxeFfe7MtC8mleDq_6AbEP1wPLkh2XIgdprBJPSg/exec">
-<input type="date" name="tanggal" required>
-<select name="jenis"><option>Pemasukan</option><option>Pengeluaran</option></select>
-<input type="text" name="keterangan" placeholder="Keterangan">
-<input type="number" name="jumlah" required>
-<button>Simpan</button>
 
-</form>
+</body>
+</html>
+
 
 
 
