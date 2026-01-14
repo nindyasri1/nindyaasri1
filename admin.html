@@ -1,24 +1,38 @@
 <!DOCTYPE html>
-<html>
-<div style="display:flex;justify-content:space-between">
-  <h3>Admin Keuangan RT</h3>
-  <button onclick="logout()">Logout</button>
-</div>
-
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <title>Admin Keuangan RT</title>
 </head>
+
 <body>
 
-<h3>Input Keuangan RT</h3>
+<!-- PROTEKSI LOGIN (PALING ATAS DI BODY) -->
+<script>
+if (sessionStorage.getItem('admin') !== 'true') {
+  location.href = 'login.html';
+}
+</script>
+
+<!-- HEADER + LOGOUT -->
+<div style="display:flex;justify-content:space-between;align-items:center">
+  <h3>Admin Keuangan RT</h3>
+  <button onclick="logout()">Logout</button>
+</div>
+
+<hr>
+
+<h4>Input Keuangan RT</h4>
 
 <input type="date" id="tanggal"><br><br>
+
 <select id="jenis">
   <option>Pemasukan</option>
   <option>Pengeluaran</option>
 </select><br><br>
+
 <input type="text" id="keterangan" placeholder="Keterangan"><br><br>
+
 <input type="number" id="jumlah" placeholder="Jumlah"><br><br>
 
 <button onclick="simpan()">Simpan</button>
@@ -39,8 +53,6 @@ function simpan(){
   .then(res => res.text())
   .then(res => {
     document.getElementById('msg').innerText = 'Data berhasil disimpan';
-    
-    // optional: reset form
     document.getElementById('tanggal').value = '';
     document.getElementById('keterangan').value = '';
     document.getElementById('jumlah').value = '';
@@ -51,25 +63,11 @@ function simpan(){
   });
 }
 
-
-</script>
-<script>
 function logout(){
   sessionStorage.removeItem('admin');
   location.href = 'login.html';
 }
-  </script>
-<script>
-if (sessionStorage.getItem('admin') !== 'true') {
-  location.href = 'login.html';
-}
 </script>
-  
+
 </body>
 </html>
-
-
-
-
-
-
