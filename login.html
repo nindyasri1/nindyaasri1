@@ -23,16 +23,17 @@ function login(){
     method: 'POST',
     body: new URLSearchParams({ test: '1' })
   })
-  .then(res => res.text())
-  .then(res => {
-    if(res.trim() === 'success'){
-      sessionStorage.setItem('admin','true');
-      location.href='admin.html';
-    } else {
-      document.getElementById('msg').innerText = 'Gagal login';
-    }
-  })
-  .catch(err=>{
+.then(res => res.text())
+.then(res => {
+  console.log(res); // ⬅️ tambahkan ini
+  if(res.trim() === 'success'){
+    sessionStorage.setItem('admin','true');
+    location.href='admin.html';
+  } else {
+    document.getElementById('msg').innerText='Gagal login';
+  }
+})
+.catch(err=>{
     document.getElementById('msg').innerText = 'Koneksi gagal';
     console.error(err);
   });
@@ -41,4 +42,5 @@ function login(){
 
 </body>
 </html>
+
 
