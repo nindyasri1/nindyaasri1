@@ -19,7 +19,7 @@
 
 <body>
 
-<h2>Laporan Keuangan nindya 1</h2>
+<h2>Laporan Keuangan Nindya 1</h2>
 
 <form id="formKeuangan" method="post">
   <input type="date" name="tanggal" required>
@@ -55,7 +55,7 @@ form.addEventListener("submit", function(e){
   const formData = new FormData(form);
   formData.append("action","simpan");
 
-  fetch("https://script.google.com/macros/s/AKfycby5hDXHir_DvDUq06lOCsXydOUA7A0nhnSvIfwEgv-lovYcucJkdfapT8VLC6GmwcuV/exec",{
+  fetch("https://script.google.com/macros/s/AKfycbxiYUNh_7jRez63XsWdIG5RwMqI-tW6EinCHbiG94vtqK1d5K21GF7YFOJLDcNKl7G4/exec",{
     method:"POST",
     body:formData
   })
@@ -73,6 +73,7 @@ form.addEventListener("submit", function(e){
 
 </body>
 </html>
+
 
 
 
