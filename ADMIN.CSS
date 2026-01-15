@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f3f4f6;
+  font-family: Arial, sans-serif;
+}
+
+/* 🔥 CENTER SEMUA */
+.admin-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* tengah vertikal */
+  align-items: center;     /* tengah horizontal */
+  text-align: center;
+}
+
+/* kartu form */
+.card {
+  background: #fff;
+  padding: 24px;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+}
+
+/* input */
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0;
+}
