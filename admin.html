@@ -177,7 +177,7 @@ if (sessionStorage.getItem('admin') !== 'true') {
     <input type="number" id="jumlah" placeholder="Rp">
 
     <button class="simpan" onclick="simpan()">💾 Simpan Data</button>
-   <button class="logout-fixed" title="Logout">🚪</button>
+    <button class="logout-fixed" onclick="logout()" title="Logout">🚪</button>
     <div id="msg"></div>
 
   </div>
@@ -212,21 +212,20 @@ function simpan(){
   });
 }
 
+<script>
 function logout(){
-  sessionStorage.removeItem('admin');
-  location.href = 'login.html';
-}
-  function logout(){
-  if(confirm("Yakin ingin logout?")){
+  if (confirm("Yakin ingin logout?")) {
     sessionStorage.clear();
     location.href = "login.html";
   }
 }
 
+
 </script>
 
 </body>
 </html>
+
 
 
 
