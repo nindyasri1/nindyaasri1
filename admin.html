@@ -131,6 +131,23 @@ button.simpan:hover{
   font-size:12px;
   color:#e5e7eb;
 }
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.dashboard-img{
+  max-width:600px;
+  width:100%;
+  display:block;
+  margin:80px auto;
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+
 </style>
 </head>
 
@@ -147,8 +164,17 @@ if(sessionStorage.getItem('admin')!=='true'){
   <div class="logo">RT 01</div>
   <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
   <ul>
-    <li><a href="#"><span>🏠</span><span class="text">Dashboard</span></a></li>
-    <li><a href="#"><span>➕</span><span class="text">Input Data</span></a></li>
+    <li>
+  <a href="#" onclick="showPage('dashboard')">
+    🏠 <span class="text">Dashboard</span>
+  </a>
+</li>
+
+<li>
+  <a href="#" onclick="showPage('input')">
+    ➕ <span class="text">Input Data</span>
+  </a>
+</li>
     <li><a href="#"><span>📊</span><span class="text">Laporan</span></a></li>
     <li><a href="#"><span>👥</span><span class="text">Data Warga</span></a></li>
     <li><a href="#" onclick="logout()"><span>🚪</span><span class="text">Logout</span></a></li>
@@ -157,34 +183,48 @@ if(sessionStorage.getItem('admin')!=='true'){
 
 <!-- CONTENT -->
 <div class="content">
-  <div class="wrapper">
-    <div class="card">
 
-      <h3>PERUM NINDYA ASRI 1<br>KEL. METESEH KEC. BOJA</h3>
-      <h4>Silahkan Input</h4>
-
-      <label>Tanggal</label>
-      <input type="date" id="tanggal">
-
-      <label>Jenis Transaksi</label>
-      <select id="jenis">
-        <option>Pemasukan</option>
-        <option>Pengeluaran</option>
-      </select>
-
-      <label>Keterangan</label>
-      <input type="text" id="keterangan">
-
-      <label>Jumlah</label>
-      <input type="number" id="jumlah">
-
-      <button class="simpan" onclick="simpan()">💾 Simpan Data</button>
-      <div id="msg"></div>
-
-    </div>
-    <div class="footer">© 2026 — Andy Pram</div>
+  <!-- DASHBOARD -->
+  <div id="page-dashboard" class="page active">
+    <img 
+      src="https://images.unsplash.com/photo-1568605114967-8130f3a36994"
+      class="dashboard-img"
+      alt="Perumahan Indonesia">
   </div>
+
+  <!-- INPUT DATA -->
+  <div id="page-input" class="page">
+    <div class="wrapper">
+      <div class="card">
+
+        <h3>PERUM NINDYA ASRI 1<br>KEL. METESEH KEC. BOJA</h3>
+        <h4>Silahkan Input</h4>
+
+        <label>Tanggal</label>
+        <input type="date" id="tanggal">
+
+        <label>Jenis Transaksi</label>
+        <select id="jenis">
+          <option>Pemasukan</option>
+          <option>Pengeluaran</option>
+        </select>
+
+        <label>Keterangan</label>
+        <input type="text" id="keterangan">
+
+        <label>Jumlah</label>
+        <input type="number" id="jumlah">
+
+        <button class="simpan" onclick="simpan()">💾 Simpan Data</button>
+        <div id="msg"></div>
+
+      </div>
+      <div class="footer">© 2026 — Andy Pram</div>
+    </div>
+  </div>
+
 </div>
+
 
 <script>
 function toggleSidebar(){
@@ -230,8 +270,20 @@ function simpan(){
 }
 
 </script>
+<script>
+function showPage(page){
+  document.querySelectorAll('.page').forEach(p=>{
+    p.classList.remove('active');
+  });
+  document.getElementById('page-' + page).classList.add('active');
+}
+
+/* default tampil dashboard */
+showPage('dashboard');
+</script>
 
 </body>
 </html>
+
 
 
