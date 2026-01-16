@@ -147,6 +147,26 @@ button.simpan:hover{
   border-radius:20px;
   box-shadow:0 20px 40px rgba(0,0,0,.35);
 }
+/* DASHBOARD HERO */
+.hero{
+  text-align:center;
+  margin-bottom:18px;
+}
+.hero h2{
+  color:#065f46;
+  margin-bottom:10px;
+}
+.hero p{
+  color:#374151;
+  font-size:15px;
+  line-height:1.6;
+}
+
+.hero-img{
+  width:100%;
+  border-radius:16px;
+  box-shadow:0 12px 30px rgba(0,0,0,.2);
+}
 
 </style>
 </head>
@@ -185,12 +205,23 @@ if(sessionStorage.getItem('admin')!=='true'){
 <div class="content">
 
   <!-- DASHBOARD -->
-  <div id="page-dashboard" class="page active">
-    <img 
-      src="https://images.unsplash.com/photo-1568605114967-8130f3a36994"
-      class="dashboard-img"
-      alt="Perumahan Indonesia">
+  <div class="card page" id="dashboard">
+
+  <div class="hero">
+    <h2>🏡 Halo Warga Perumahan Nindya Asri 1!</h2>
+    <p>
+      Selamat datang di <b>“Rumah Online”</b> kita.<br>
+      Mari berkolaborasi untuk lingkungan yang lebih baik,
+      rukun, transparan, dan saling peduli 🌱
+    </p>
   </div>
+
+  <img 
+    src="https://images.unsplash.com/photo-1568605114967-8130f3a36994"
+    class="hero-img"
+    alt="Perumahan Indonesia">
+
+</div>
 
   <!-- INPUT DATA -->
   <div id="page-input" class="page">
@@ -284,6 +315,7 @@ showPage('dashboard');
 
 </body>
 </html>
+
 
 
 
