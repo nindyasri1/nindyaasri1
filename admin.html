@@ -692,7 +692,7 @@ function loadWarga(){
     .then(res=>res.json())
     .then(warga=>{
       body.innerHTML='';
-      data.slice(1).forEach((r,i)=>{
+      warga.slice(1).forEach((r,i)=>{
         body.innerHTML+=`
           <tr>
             <td>${i+1}</td>
@@ -712,13 +712,13 @@ function simpanWarga(){
 
   fetch('https://script.google.com/macros/s/AKfycbwxl263rf_wXePPx8-4Nabz_6vW_1FxeFfe7MtC8mleDq_6AbEP1wPLkh2XIgdprBJPSg/exec',{
     method:'POST',
-    body:new URLSearchParams({
-      action:'warga',
-      nama:namaWarga.value,
-      rumah:rumahWarga.value,
-      hp:hpWarga.value,
-      status:statusWarga.value
-      anak:anak.value
+   body:new URLSearchParams({
+  action:'warga',
+  nama: document.getElementById('namaWarga').value,
+  rumah: document.getElementById('rumahWarga').value,
+  hp: document.getElementById('hpWarga').value,
+  status: document.getElementById('statusWarga').value,
+  anak: document.getElementById('anak').value
     })
   })
   .then(()=>{
@@ -834,6 +834,7 @@ function simpanWarga(){
 
 </body>
 </html>
+
 
 
 
