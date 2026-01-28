@@ -102,8 +102,13 @@ body::before{
   <div class="box">
     <h3>Login Warga RT Nindya 1</h3>
 
-   <form onsubmit="login(); return false;">
-  <input type="password" id="pw" placeholder="Password" autofocus>
+  <form id="loginForm" onsubmit="login(); return false;">
+  <input 
+    type="password" 
+    id="pw" 
+    placeholder="Password"
+    autofocus
+  >
   <button type="submit">Login</button>
 </form>
 
@@ -145,6 +150,7 @@ function login(){
 
 </body>
 </html>
+
 
 
 
