@@ -924,7 +924,7 @@ function uploadFoto(){
 <!-- POPUP DATA WARGA DAN REGIST -->  
 <div class="modal" id="tabelWarga">
   <div class="modal-box" style="max-width:750px">
-    <h3>👥 Tabel Data Warga</h3>
+    <h3>👥 Data Warga</h3>
 
     <table class="tabel">
       <thead>
@@ -975,9 +975,28 @@ function uploadFoto(){
     <div id="msgWarga"></div>
   </div>
 </div>
+<!-- POPUP UPLOAD FOTO -->
+<div class="modal" id="uploadModal">
+  <div class="modal-box">
+    <h3>📤 Upload Foto Warga</h3>
 
+    <label>Judul / Keterangan</label>
+    <input type="text" id="fotoJudul" placeholder="Misal: Kerja Bakti RT">
+
+    <label>Pilih Foto</label>
+    <input type="file" id="fotoFile" accept="image/*">
+
+    <div class="modal-btn">
+      <button class="btn-cancel" onclick="closeUploadFoto()">Batal</button>
+      <button class="btn-send" onclick="uploadFoto()">Upload</button>
+    </div>
+
+    <div id="msgFoto"></div>
+  </div>
+</div>
 </body>
 </html>
+
 
 
 
