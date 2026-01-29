@@ -838,39 +838,47 @@ function loadGaleri(){
     })
     .catch(()=> list.innerHTML='❌ Gagal memuat galeri');
 }
-
+  
 function uploadFoto(){
-  const file = document.getElementById('fotoFile').files[0];
+  const fileInput = document.getElementById('fotoFile');
   const judul = document.getElementById('fotoJudul').value;
   const msg = document.getElementById('msgFoto');
 
-  if(!file){
-    msg.innerText='❌ Pilih foto';
+  if(!fileInput.files.length){
+    msg.innerText='❌ Pilih foto dulu';
     return;
   }
 
   msg.innerText='⏳ Mengupload...';
 
+  const file = fileInput.files[0];
+
+  // BATASI UKURAN 1MB
+  if(file.size > 1024 * 1024){
+    msg.innerText='❌ Foto terlalu besar (maks 1MB)';
+    return;
+  }
+
   const reader = new FileReader();
-  reader.onload = function(){
+  reader.onloadend = function(){
+    const base64 = reader.result.split(',')[1]; // PENTING
+
     fetch('https://script.google.com/macros/s/AKfycbwxl263rf_wXePPx8-4Nabz_6vW_1FxeFfe7MtC8mleDq_6AbEP1wPLkh2XIgdprBJPSg/exec',{
       method:'POST',
-      body:new URLSearchParams({
-        action:'uploadFoto',
-        judul:judul,
-        file: reader.result
-      })
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:`action=uploadFoto&judul=${encodeURIComponent(judul)}&file=${encodeURIComponent(base64)}`
     })
-    .then(res => res.text())
-    .then(res => {
-      if(res.trim() === 'OK'){
+    .then(res=>res.text())
+    .then(res=>{
+      if(res.trim()==='OK'){
         msg.innerText='✅ Foto berhasil diupload';
         setTimeout(()=>{
           closeUploadFoto();
           loadGaleri();
         },1200);
-      } else {
+      }else{
         msg.innerText='❌ Upload gagal';
+        console.log(res);
       }
     })
     .catch(err=>{
@@ -880,9 +888,7 @@ function uploadFoto(){
   };
   reader.readAsDataURL(file);
 }
-
 </script>
-
 
 <!-- POPUP LAPOR & SARAN -->
 <div class="modal" id="laporModal">
@@ -1006,6 +1012,7 @@ function uploadFoto(){
 </div>
 </body>
 </html>
+
 
 
 
