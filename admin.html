@@ -903,11 +903,33 @@ function uploadFoto(){
   reader.onloadend = function(){
      const base64 = reader.result.split(',')[1]; // WAJIB ADA
 
-    fetch('https://script.google.com/macros/s/AKfycbwxl263rf_wXePPx8-4Nabz_6vW_1FxeFfe7MtC8mleDq_6AbEP1wPLkh2XIgdprBJPSg/exec',{
-      method:'POST',
-      headers:{'Content-Type':'application/x-www-form-urlencoded'},
-      body:`action=uploadFoto&judul=${encodeURIComponent(judul)}&file=${encodeURIComponent(base64)}`
-    })
+    const fd = new FormData();
+fd.append('action', 'uploadFoto');
+fd.append('judul', judul);
+fd.append('file', base64);
+
+fetch('https://script.google.com/macros/s/AKfycbwxl263rf_wXePPx8-4Nabz_6vW_1FxeFfe7MtC8mleDq_6AbEP1wPLkh2XIgdprBJPSg/exec', {
+  method: 'POST',
+  body: fd
+})
+.then(res => res.text())
+.then(res => {
+  if(res.trim() === 'OK'){
+    msg.innerText = '✅ Foto berhasil diupload';
+    setTimeout(()=>{
+      closeUploadFoto();
+      loadGaleri();
+    },1200);
+  } else {
+    msg.innerText = '❌ Upload gagal';
+    console.log(res);
+  }
+})
+.catch(err=>{
+  msg.innerText = '❌ Error upload';
+  console.error(err);
+});
+
     .then(res=>res.text())
     .then(res=>{
       if(res.trim()==='OK'){
@@ -1056,6 +1078,7 @@ function tutupInput(){
 </div>
 </body>
 </html>
+
 
 
 
